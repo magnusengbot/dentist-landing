@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thank you for contacting Bright Smile Dental. We'll be in touch within 24 hours.">
+  <meta name="robots" content="noindex">
+  
+  <title>Thank You - Bright Smile Dental</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .thank-you-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-xl);
+      background: linear-gradient(135deg, var(--color-background-alt) 0%, var(--color-white) 100%);
+    }
+    
+    .thank-you-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: var(--space-2xl);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .thank-you-icon {
+      width: 80px;
+      height: 80px;
+      background-color: var(--color-accent);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-xl);
+    }
+    
+    .thank-you-icon svg {
+      width: 40px;
+      height: 40px;
+      color: var(--color-white);
+    }
+    
+    .thank-you-title {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--space-md);
+      color: var(--color-text);
+    }
+    
+    .thank-you-message {
+      color: var(--color-text-light);
+      margin-bottom: var(--space-xl);
+      line-height: var(--line-height-loose);
+    }
+    
+    .thank-you-details {
+      background-color: var(--color-background-alt);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      text-align: left;
+    }
+    
+    .thank-you-details h3 {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .thank-you-details ul {
+      list-style: none;
+    }
+    
+    .thank-you-details li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-xs) 0;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-light);
+    }
+    
+    .thank-you-details li svg {
+      flex-shrink: 0;
+      color: var(--color-accent);
+      margin-top: 2px;
+    }
+    
+    .thank-you-cta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    @media (min-width: 480px) {
+      .thank-you-cta {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="thank-you-page">
+    <div class="thank-you-card">
+      <div class="thank-you-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      
+      <h1 class="thank-you-title">Thank You!</h1>
+      
+      <p class="thank-you-message">
+        Your appointment request has been received. Our team will review your information 
+        and contact you within 24 hours to confirm your appointment.
+      </p>
+      
+      <div class="thank-you-details">
+        <h3>What Happens Next?</h3>
+        <ul>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>We'll review your request and check availability</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>You'll receive a call or email to confirm your appointment</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>We'll send you a reminder before your visit</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="thank-you-cta">
+        <a href="/" class="btn btn--primary">Return Home</a>
+        <a href="tel:+15551234567" class="btn btn--secondary">
+          <svg class="icon" aria-hidden="true" width="20" height="20">
+            <use href="images/icons/phone.svg#icon"></use>
+          </svg>
+          Call Us Now
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
