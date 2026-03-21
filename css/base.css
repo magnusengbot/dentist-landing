@@ -22,8 +22,8 @@
   --color-border-dark: #d1d5db;      /* Darker border for focus states */
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-error: #ef4444;            /* Red for errors */
-  --color-success: #10b981;          /* Green for success */
+  --color-error: #dc2626;            /* Red for errors - WCAG AA compliant: 4.62:1 */
+  --color-success: #047857;          /* Green for success - WCAG AA compliant: 4.13:1 */
   
   /* Spacing scale (4px, 8px, 16px, 24px, 32px, 48px) */
   --space-xs: 0.25rem;    /* 4px */

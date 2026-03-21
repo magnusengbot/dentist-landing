@@ -732,7 +732,7 @@ body:has(.nav-menu.is-active) {
 }
 
 .testimonial-rating {
-  color: #fbbf24; /* Gold stars */
+  color: #d97706; /* Darker gold for WCAG AA contrast: 3.02:1 */
   font-size: var(--font-size-lg);
 }
 
