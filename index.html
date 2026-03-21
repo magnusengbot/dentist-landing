@@ -27,6 +27,111 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://brightsmile.example.com/">
+  
+  <!-- JSON-LD Structured Data for Local Business (Dentist) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Bright Smile Dental",
+    "description": "Professional dental care for the whole family. Offering general dentistry, cosmetic procedures, dental implants, orthodontics, and emergency services.",
+    "url": "https://brightsmile.example.com",
+    "telephone": "+1-555-123-4567",
+    "email": "info@brightsmile.example.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main Street, Suite 200",
+      "addressLocality": "Springfield",
+      "addressRegion": "CA",
+      "postalCode": "90210",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "34.0522",
+      "longitude": "-118.2437"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "08:00",
+        "closes": "16:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "13:00"
+      }
+    ],
+    "priceRange": "$$",
+    "image": "https://brightsmile.example.com/images/hero/og-image.jpg",
+    "sameAs": [
+      "https://facebook.com/brightsmile",
+      "https://instagram.com/brightsmile",
+      "https://twitter.com/brightsmile",
+      "https://linkedin.com/company/brightsmile"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Dental Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "General Dentistry"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Teeth Whitening"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Dental Implants"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Orthodontics"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Veneers & Bonding"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Emergency Dental Care"
+          }
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
   <!-- Skip to main content link for accessibility -->

@@ -1,0 +1,11 @@
+# robots.txt for Bright Smile Dental
+# https://brightsmile.example.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://brightsmile.example.com/sitemap.xml
+
+# Disallow thank-you page from search indexing
+Disallow: /thank-you.html
