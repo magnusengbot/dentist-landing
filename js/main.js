@@ -1,7 +1,9 @@
 /**
  * Main JavaScript for Bright Smile Dental Landing Page
- * - Mobile navigation toggle
+ * - Mobile navigation toggle with scroll lock
+ * - Smooth scroll with header offset
  * - Form validation
+ * - Sticky header scroll behavior
  * - Current year in footer
  */
 
@@ -13,20 +15,63 @@
   // ============================================
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-menu');
-  
+  const header = document.querySelector('.header');
+  let isMenuOpen = false;
+
+  /**
+   * Toggle mobile menu open/closed
+   */
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navMenu.classList.toggle('is-active');
+    
+    // Toggle body scroll lock
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    
+    // Update hamburger animation
+    if (isMenuOpen) {
+      navToggle.querySelector('.hamburger').setAttribute('aria-label', 'Close menu');
+    } else {
+      navToggle.querySelector('.hamburger').setAttribute('aria-label', 'Open menu');
+    }
+  }
+
+  /**
+   * Close mobile menu
+   */
+  function closeMenu() {
+    if (!isMenuOpen) return;
+    isMenuOpen = false;
+    navToggle.setAttribute('aria-expanded', 'false');
+    navMenu.classList.remove('is-active');
+    document.body.style.overflow = '';
+    navToggle.querySelector('.hamburger').setAttribute('aria-label', 'Open menu');
+  }
+
   if (navToggle && navMenu) {
-    navToggle.addEventListener('click', function() {
-      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !isExpanded);
-      navMenu.classList.toggle('is-active');
-    });
+    // Toggle menu on hamburger click
+    navToggle.addEventListener('click', toggleMenu);
 
     // Close menu when clicking a link
     navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function() {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navMenu.classList.remove('is-active');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+        navToggle.focus(); // Return focus to toggle button
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (isMenuOpen && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        closeMenu();
+      }
     });
   }
 
@@ -241,20 +286,106 @@
   // ============================================
   // Smooth Scroll for Anchor Links
   // ============================================
+  const HEADER_HEIGHT = 80; // Sticky header height in pixels
+
+  /**
+   * Smooth scroll to an element with header offset
+   * @param {string} targetId - The ID of the target element (with #)
+   */
+  function smoothScrollTo(targetId) {
+    const targetElement = document.querySelector(targetId);
+    if (!targetElement) return;
+
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+
+    // Update URL hash without jump
+    if (history.pushState) {
+      history.pushState(null, null, targetId);
+    }
+  }
+
+  // Handle anchor link clicks
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      if (targetId === '#' || targetId === '#main') {
+        // For skip link or empty hash, just scroll to top
+        if (targetId === '#main') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        return;
+      }
       
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         e.preventDefault();
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        smoothScrollTo(targetId);
       }
     });
   });
+
+  // Handle initial hash on page load
+  if (window.location.hash) {
+    // Wait for page to fully load
+    setTimeout(() => {
+      smoothScrollTo(window.location.hash);
+    }, 100);
+  }
+
+  // ============================================
+  // Sticky Header Scroll Behavior
+  // ============================================
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  /**
+   * Update header state based on scroll position
+   */
+  function updateHeaderOnScroll() {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - lastScrollY;
+
+    // Add shadow when scrolled past header
+    if (currentScrollY > 10) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+
+    // Optional: Hide header on scroll down, show on scroll up
+    // This adds 'is-hidden' class when scrolling down past threshold
+    if (currentScrollY > 100 && scrollDelta > 0 && !isMenuOpen) {
+      header.classList.add('is-hidden');
+    } else {
+      header.classList.remove('is-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  }
+
+  /**
+   * Throttle scroll event using requestAnimationFrame
+   */
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeaderOnScroll);
+      ticking = true;
+    }
+  }
+
+  if (header) {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    // Initialize header state
+    updateHeaderOnScroll();
+  }
 
 })();

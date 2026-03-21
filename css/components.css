@@ -11,7 +11,18 @@
   top: 0;
   z-index: var(--z-sticky);
   background-color: var(--color-white);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+/* Shadow on scroll */
+.header.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+/* Hide header on scroll down (optional) */
+.header.is-hidden {
+  transform: translateY(-100%);
 }
 
 .nav {
@@ -98,10 +109,17 @@
   right: 0;
   box-shadow: var(--shadow-lg);
   padding: var(--space-md) 0;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 
 .nav-menu.is-active {
   display: flex;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body:has(.nav-menu.is-active) {
+  overflow: hidden;
 }
 
 .nav-menu li {
