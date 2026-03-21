@@ -790,6 +790,60 @@
   margin-bottom: 0;
 }
 
+/* Form Validation Styles */
+.form-error {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  margin-top: var(--space-xs);
+  min-height: 1.25rem;
+}
+
+.form-hint {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-top: var(--space-xs);
+}
+
+/* Input states */
+.form-group input:invalid:not(:placeholder-shown):not(:focus),
+.form-group select:invalid:not(:focus),
+.form-group textarea:invalid:not(:placeholder-shown):not(:focus) {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 0.1);
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+  border-color: var(--color-success);
+}
+
+.form-group input:invalid:not(:placeholder-shown):not(:focus) + .form-error:not(:empty),
+.form-group textarea:invalid:not(:placeholder-shown):not(:focus) + .form-hint + .form-error:not(:empty) {
+  display: block;
+}
+
+/* Input with error state */
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 0.1);
+}
+
+/* Input with success state */
+.form-group.has-success input,
+.form-group.has-success select,
+.form-group.has-success textarea {
+  border-color: var(--color-success);
+}
+
+/* Hide empty error messages */
+.form-error:empty {
+  display: none;
+}
+
 @media (min-width: 480px) {
   .form-row {
     grid-template-columns: repeat(2, 1fr);
