@@ -1,0 +1,73 @@
+/* ==========================================================================
+   STYLES.css - Main Entry Point
+   Imports all CSS modules for the dentist landing page
+   
+   Structure:
+   1. Base - Reset, variables, typography
+   2. Layout - Grid, containers, section spacing
+   3. Components - Buttons, cards, forms, navigation
+   ========================================================================== */
+
+@import url('./base.css');
+@import url('./layout.css');
+@import url('./components.css');
+
+/* ==========================================================================
+   ADDITIONAL GLOBAL STYLES
+   ========================================================================== */
+
+/* Smooth scrolling for anchor links */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: var(--color-text);
+    --color-text-light: var(--color-text);
+  }
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .hero-ctas,
+  .nav-toggle,
+  .footer-social,
+  .contact-form-wrapper,
+  .btn {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+}
