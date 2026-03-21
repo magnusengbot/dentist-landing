@@ -119,10 +119,11 @@
       phone: {
         validate: (value) => {
           if (!value.trim()) return ''; // Optional field
-          // Allow various phone formats
-          const phoneRegex = /^[\d\s\-\(\)\+]{10,}$/;
-          if (!phoneRegex.test(value.replace(/\s/g, ''))) {
-            return 'Please enter a valid phone number';
+          // Match HTML pattern: [0-9]{3}[-. ]?[0-9]{3}[-. ]?[0-9]{4}
+          // Accepts formats like: 5551234567, 555-123-4567, 555.123.4567, 555 123 4567
+          const phoneRegex = /^[0-9]{3}[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+          if (!phoneRegex.test(value.trim())) {
+            return 'Please enter a valid phone number (e.g., 555-123-4567)';
           }
           return '';
         }
