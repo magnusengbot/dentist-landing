@@ -1,11 +1,11 @@
 # robots.txt for Bright Smile Dental
-# https://brightsmile.example.com
+# https://magnusengbot.github.io/dentist-landing
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://brightsmile.example.com/sitemap.xml
+Sitemap: https://magnusengbot.github.io/dentist-landing/sitemap.xml
 
 # Disallow thank-you page from search indexing
 Disallow: /thank-you.html
