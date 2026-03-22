@@ -134,6 +134,56 @@
     }
   }
   </script>
+
+  <!-- FAQ Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you accept my insurance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We work with most major dental insurance providers. Please call us at (555) 123-4567 to verify if we accept your specific plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer same-day appointments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We offer same-day appointments for urgent dental needs. Call us today to schedule."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the office COVID-19 safe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely! We follow all CDC guidelines and have enhanced safety protocols to protect you and our team."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you treat children?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We welcome patients of all ages, from infants to seniors. Our team is experienced in pediatric dentistry."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment options do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept most major credit cards, HSA/FSA funds, and offer flexible financing options through CareCredit."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Skip to main content link for accessibility -->
@@ -194,13 +244,13 @@
             <svg class="icon" aria-hidden="true" width="16" height="16">
               <use href="images/icons/clock.svg#icon"></use>
             </svg>
-            Same-Day Appointments
+            Same-Day Appointments Available
           </span>
           <span class="badge">
             <svg class="icon" aria-hidden="true" width="16" height="16">
               <use href="images/icons/shield.svg#icon"></use>
             </svg>
-            COVID-19 Safe
+            COVID-19 Safe Environment
           </span>
         </div>
       </div>
@@ -536,8 +586,10 @@
                     placeholder="John"
                     minlength="2"
                     maxlength="50"
-                    aria-describedby="firstName-error"
+                    aria-describedby="firstName-error firstName-hint"
+                    aria-invalid="false"
                   >
+                  <span id="firstName-hint" class="form-hint">Enter your first name</span>
                   <span id="firstName-error" class="form-error" role="alert" aria-live="polite"></span>
                 </div>
                 <div class="form-group">
@@ -551,8 +603,10 @@
                     placeholder="Doe"
                     minlength="2"
                     maxlength="50"
-                    aria-describedby="lastName-error"
+                    aria-describedby="lastName-error lastName-hint"
+                    aria-invalid="false"
                   >
+                  <span id="lastName-hint" class="form-hint">Enter your last name</span>
                   <span id="lastName-error" class="form-error" role="alert" aria-live="polite"></span>
                 </div>
               </div>
@@ -567,8 +621,10 @@
                     required 
                     autocomplete="email" 
                     placeholder="john@example.com"
-                    aria-describedby="email-error"
+                    aria-describedby="email-error email-hint"
+                    aria-invalid="false"
                   >
+                  <span id="email-hint" class="form-hint">We'll use this to confirm your appointment</span>
                   <span id="email-error" class="form-error" role="alert" aria-live="polite"></span>
                 </div>
                 <div class="form-group">
@@ -581,6 +637,7 @@
                     placeholder="(555) 123-4567"
                     pattern="[0-9]{3}[-. ]?[0-9]{3}[-. ]?[0-9]{4}"
                     aria-describedby="phone-error phone-hint"
+                    aria-invalid="false"
                   >
                   <span id="phone-hint" class="form-hint">Optional - format: (555) 123-4567</span>
                   <span id="phone-error" class="form-error" role="alert" aria-live="polite"></span>
@@ -589,7 +646,7 @@
               
               <div class="form-group">
                 <label for="service">Service Interested In</label>
-                <select id="service" name="service" aria-describedby="service-hint">
+                <select id="service" name="service" aria-describedby="service-hint service-error" aria-invalid="false">
                   <option value="">Select a service...</option>
                   <option value="general">General Dentistry & Checkup</option>
                   <option value="whitening">Teeth Whitening</option>
@@ -600,6 +657,7 @@
                   <option value="other">Other / Not Sure</option>
                 </select>
                 <span id="service-hint" class="form-hint">Choose the service you're most interested in</span>
+                <span id="service-error" class="form-error" role="alert" aria-live="polite"></span>
               </div>
               
               <div class="form-row">
@@ -609,19 +667,22 @@
                     type="date" 
                     id="preferredDate" 
                     name="preferredDate"
-                    aria-describedby="date-hint"
+                    aria-describedby="date-hint date-error"
+                    aria-invalid="false"
                   >
                   <span id="date-hint" class="form-hint">Select your preferred appointment date</span>
+                  <span id="date-error" class="form-error" role="alert" aria-live="polite"></span>
                 </div>
                 <div class="form-group">
                   <label for="preferredTime">Preferred Time</label>
-                  <select id="preferredTime" name="preferredTime" aria-describedby="time-hint">
+                  <select id="preferredTime" name="preferredTime" aria-describedby="time-hint time-error" aria-invalid="false">
                     <option value="">Select a time...</option>
                     <option value="morning">Morning (8am - 12pm)</option>
                     <option value="afternoon">Afternoon (12pm - 5pm)</option>
                     <option value="flexible">I'm Flexible</option>
                   </select>
                   <span id="time-hint" class="form-hint">Choose your preferred time slot</span>
+                  <span id="time-error" class="form-error" role="alert" aria-live="polite"></span>
                 </div>
               </div>
               
@@ -636,6 +697,7 @@
                   maxlength="1000"
                   placeholder="Tell us about your dental concerns or any questions you have..."
                   aria-describedby="message-error message-hint"
+                  aria-invalid="false"
                 ></textarea>
                 <span id="message-hint" class="form-hint">Please describe your dental concerns (minimum 10 characters)</span>
                 <span id="message-error" class="form-error" role="alert" aria-live="polite"></span>
