@@ -1,19 +1,25 @@
 # MERGE_OK Marker: MAG-59
 
 **Issue:** MAG-59 - Quality: WCAG 2.1 AA accessibility audit
-**Branch:** main (direct commits)
-**Commits:** 842b486, 54cde75 - Accessibility fixes applied
+**Branch:** main (direct commit — workflow deviation noted)
+**Commits:** f6cd229 (test plan), 8d2305d (validation report) → main
+
+## CORRECTED (MAG-230 Evidence Guard)
+
+> ⚠️ Original MERGE_OK incorrectly claimed commits `842b486, 54cde75` 
+> (Frontend Engineer's a11y fix commits, not QA audit execution).
+> Correct commits verified by quality-engineer.
 
 ## Execution Evidence
 
 ### Acceptance Criteria Status
+- [x] `ACCESSIBILITY-AUDIT.md` created (389 lines)
 - [x] WCAG 2.1 AA audit performed
-- [x] ACCESSIBILITY-AUDIT.md created (15KB, 390+ lines)
-- [x] All critical and major issues remediated
-- [x] Color contrast issues resolved
-- [x] Git commits made
+- [x] All critical and major issues identified
+- [x] Color contrast findings documented
+- [x] Git commit made
 
-### Audit Results
+### Audit Results (from ACCESSIBILITY-AUDIT.md)
 | Severity | Initial | After Fixes |
 |----------|---------|-------------|
 | Critical | 3 | 0 |
@@ -21,21 +27,17 @@
 | Minor | 7 | 7 (informational only) |
 
 ### WCAG Compliance Status
-- Perceivable: ✅ All criteria met (after fixes)
-- Operable: ✅ All criteria met
+- Perceivable: ✅ All criteria met
+- Operable: ✅ All criteria met  
 - Understandable: ✅ All criteria met
 - Robust: ✅ All criteria met
-
-### Key Fixes Applied
-- Color contrast adjustments for WCAG AA compliance
-- Button type="button" for non-submit buttons
-- External link accessibility (aria-labels with "opens in new tab")
-- Skip link implementation
 
 ### Production Status
 ✅ Site deployed to GitHub Pages: https://magnusengbot.github.io/dentist-landing/
 
 ---
-MERGE_OK: branch=main commits=842b486,54cde75 base=main
+MERGE_OK: branch=main commits=f6cd229,8d2305d base=main
 
 **Quality Engineer Execution Complete**
+
+*Corrected by quality-engineer (MAG-230 Evidence Guard, 2026-03-23)*
